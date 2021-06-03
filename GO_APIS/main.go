@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 )
@@ -59,7 +58,6 @@ type AdvancedRequest struct {
 func advanced(w http.ResponseWriter, r *http.Request) {
 	var method = r.Method
 	if method == "GET" {
-		fmt.Println("Endpoint Hit: advanced get")
 		var req AdvancedRequest
 		var unmarshalErr *json.UnmarshalTypeError
 		decoder := json.NewDecoder(r.Body)
@@ -76,7 +74,6 @@ func advanced(w http.ResponseWriter, r *http.Request) {
 		var resp = req
 		json.NewEncoder(w).Encode(resp)
 	} else if method == "POST" {
-		fmt.Println("Endpoint Hit: advanced post")
 		var req AdvancedRequest
 		var unmarshalErr *json.UnmarshalTypeError
 		decoder := json.NewDecoder(r.Body)
@@ -103,9 +100,7 @@ func basic(w http.ResponseWriter, r *http.Request) {
 		var mess = r.FormValue("inputString")
 		var resp = BasicResponse{Status: stat, Message: mess}
 		json.NewEncoder(w).Encode(resp)
-		fmt.Println("Endpoint Hit: basic get")
 	} else if method == "POST" {
-		fmt.Println("Endpoint Hit: basic post")
 		var stat = "success"
 		var req BasicRequest
 		var unmarshalErr *json.UnmarshalTypeError
