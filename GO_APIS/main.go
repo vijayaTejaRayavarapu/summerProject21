@@ -11,6 +11,19 @@ type BasicResponse struct {
 	Status  string
 	Message string
 }
+
+type AdvancedResponseGet struct {
+	Status     string
+	Message    string
+	EmployeeId string
+	SkillId    string
+	HobbyId    string
+	Country    string
+	State      string
+	Phone      string
+	City       string
+}
+
 type BasicRequest struct {
 	InputString string `json:"inputString"`
 }
@@ -58,20 +71,16 @@ type AdvancedRequest struct {
 func advanced(w http.ResponseWriter, r *http.Request) {
 	var method = r.Method
 	if method == "GET" {
-		var req AdvancedRequest
-		var unmarshalErr *json.UnmarshalTypeError
-		decoder := json.NewDecoder(r.Body)
-		decoder.DisallowUnknownFields()
-		err := decoder.Decode(&req)
-		if err != nil {
-			if errors.As(err, &unmarshalErr) {
-				errorResponse(w, "Bad Request. Wrong Type provided for field "+unmarshalErr.Field, http.StatusBadRequest)
-			} else {
-				errorResponse(w, "Bad Request "+err.Error(), http.StatusBadRequest)
-			}
-			return
-		}
-		var resp = req
+		var stat = "success"
+		var mess = r.FormValue("inputString")
+		var emp = r.FormValue("employeeId")
+		var sid = r.FormValue("skillId")
+		var hid = r.FormValue("hobbyId")
+		var phone = r.FormValue("phone")
+		var city = r.FormValue("city")
+		var state = r.FormValue("state")
+		var country = r.FormValue("country")
+		var resp = AdvancedResponseGet{Status: stat, Message: mess, EmployeeId: emp, SkillId: sid, HobbyId: hid, Phone: phone, City: city, State: state, Country: country}
 		json.NewEncoder(w).Encode(resp)
 	} else if method == "POST" {
 		var req AdvancedRequest
@@ -92,7 +101,9 @@ func advanced(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
+func home(w http.ResponseWriter, r *http.Request) {
+	json.NewEncoder(w).Encode("Home")
+}
 func basic(w http.ResponseWriter, r *http.Request) {
 	var method = r.Method
 	if method == "GET" {
@@ -130,6 +141,7 @@ func errorResponse(w http.ResponseWriter, message string, httpStatusCode int) {
 	w.Write(jsonResp)
 }
 func handleRequests() {
+	http.HandleFunc("/", home)
 	http.HandleFunc("/basic", basic)
 	http.HandleFunc("/advanced", advanced)
 	log.Fatal(http.ListenAndServe(":8080", nil))

@@ -12,7 +12,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Warm up" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -31,9 +31,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -101,14 +101,14 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Peak Load" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">512</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">120</stringProp>
@@ -120,9 +120,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -190,7 +190,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Cool down" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -209,9 +209,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -279,7 +279,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -313,10 +313,10 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">C:\JMeterResults\go_results_128.csv</stringProp>
       </ResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.BytesThroughputOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Bytes Throughput Over Time" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.BytesThroughputOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Bytes Throughput Over Time" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -350,7 +350,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">C:\JMeterResults\go_results_128.csv</stringProp>
         <longProp name="interval_grouping">1000</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -361,7 +361,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -395,7 +395,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">C:\JMeterResults\go_results_128.csv</stringProp>
         <longProp name="interval_grouping">500</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -406,7 +406,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -440,7 +440,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">C:\JMeterResults\test_results_128_go.jtl</stringProp>
         <longProp name="interval_grouping">1000</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -451,7 +451,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -485,7 +485,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename"></stringProp>
+        <stringProp name="filename">C:\JMeterResults\results_128.csv</stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>

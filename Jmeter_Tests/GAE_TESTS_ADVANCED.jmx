@@ -12,7 +12,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Warm up" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="threads" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -31,9 +31,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -42,47 +42,63 @@
         </ConfigTestElement>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
+              <elementProp name="inputString" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;inputString&quot;: &quot;any input string&quot;,&#xd;
-  &quot;employeeDetails&quot;: [&#xd;
-    {&#xd;
-      &quot;id&quot;: 1,&#xd;
-      &quot;basicDetails&quot;: {&#xd;
-        &quot;id&quot;: 124,&#xd;
-        &quot;name&quot;: &quot;John Doe&quot;,&#xd;
-        &quot;phoneNumbers&quot;: [&#xd;
-          &quot;2435678909&quot;&#xd;
-        ],&#xd;
-        &quot;address&quot;: {&#xd;
-          &quot;line1&quot;: &quot;65 Apple street&quot;,&#xd;
-          &quot;city&quot;: &quot;sample city&quot;,&#xd;
-          &quot;state&quot;: &quot;sample city&quot;,&#xd;
-          &quot;country&quot;: &quot;sample country&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;additionalDetails&quot;: {&#xd;
-        &quot;skills&quot;: [&#xd;
-          {&#xd;
-            &quot;skillId&quot;: 1,&#xd;
-            &quot;skill&quot;: &quot;C++&quot;&#xd;
-          }&#xd;
-        ],&#xd;
-        &quot;hobbies&quot;: [&#xd;
-          {&#xd;
-            &quot;hobbyId&quot;: 1,&#xd;
-            &quot;hobby&quot;: &quot;Cooking&quot;&#xd;
-          }&#xd;
-        ]&#xd;
-      }&#xd;
-    }&#xd;
-  ]&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">dsdfdsffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">inputString</stringProp>
+              </elementProp>
+              <elementProp name="employeeId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">234332323232232322434323424244243</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">employeeId</stringProp>
+              </elementProp>
+              <elementProp name="skillId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">231343434345454335324242343434344</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">skillId</stringProp>
+              </elementProp>
+              <elementProp name="hobbyId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">848323423423423434243243242342342</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">hobbyId</stringProp>
+              </elementProp>
+              <elementProp name="phone" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">32784827213</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">phone</stringProp>
+              </elementProp>
+              <elementProp name="city" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Boston</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">city</stringProp>
+              </elementProp>
+              <elementProp name="state" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">MA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">state</stringProp>
+              </elementProp>
+              <elementProp name="country" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">USA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">country</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -96,6 +112,7 @@
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -164,14 +181,14 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Peak Load" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="threads" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">512</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">120</stringProp>
@@ -183,9 +200,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -194,47 +211,63 @@
         </ConfigTestElement>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
+              <elementProp name="inputString" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;inputString&quot;: &quot;any input string&quot;,&#xd;
-  &quot;employeeDetails&quot;: [&#xd;
-    {&#xd;
-      &quot;id&quot;: 1,&#xd;
-      &quot;basicDetails&quot;: {&#xd;
-        &quot;id&quot;: 124,&#xd;
-        &quot;name&quot;: &quot;John Doe&quot;,&#xd;
-        &quot;phoneNumbers&quot;: [&#xd;
-          &quot;2435678909&quot;&#xd;
-        ],&#xd;
-        &quot;address&quot;: {&#xd;
-          &quot;line1&quot;: &quot;65 Apple street&quot;,&#xd;
-          &quot;city&quot;: &quot;sample city&quot;,&#xd;
-          &quot;state&quot;: &quot;sample city&quot;,&#xd;
-          &quot;country&quot;: &quot;sample country&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;additionalDetails&quot;: {&#xd;
-        &quot;skills&quot;: [&#xd;
-          {&#xd;
-            &quot;skillId&quot;: 1,&#xd;
-            &quot;skill&quot;: &quot;C++&quot;&#xd;
-          }&#xd;
-        ],&#xd;
-        &quot;hobbies&quot;: [&#xd;
-          {&#xd;
-            &quot;hobbyId&quot;: 1,&#xd;
-            &quot;hobby&quot;: &quot;Cooking&quot;&#xd;
-          }&#xd;
-        ]&#xd;
-      }&#xd;
-    }&#xd;
-  ]&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">dsdfdsffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">inputString</stringProp>
+              </elementProp>
+              <elementProp name="employeeId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">234332323232232322434323424244243</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">employeeId</stringProp>
+              </elementProp>
+              <elementProp name="skillId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">231343434345454335324242343434344</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">skillId</stringProp>
+              </elementProp>
+              <elementProp name="hobbyId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">848323423423423434243243242342342</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">hobbyId</stringProp>
+              </elementProp>
+              <elementProp name="phone" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">32784827213</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">phone</stringProp>
+              </elementProp>
+              <elementProp name="city" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Boston</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">city</stringProp>
+              </elementProp>
+              <elementProp name="state" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">MA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">state</stringProp>
+              </elementProp>
+              <elementProp name="country" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">USA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">country</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -248,6 +281,7 @@
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -316,7 +350,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Cool down" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="threads" enabled="true">
         <stringProp name="TestPlan.comments">Requests</stringProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -335,9 +369,9 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(hostname,go-apis-perftest-1.uk.r.appspot.com)}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -346,47 +380,63 @@
         </ConfigTestElement>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
+              <elementProp name="inputString" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;inputString&quot;: &quot;any input string&quot;,&#xd;
-  &quot;employeeDetails&quot;: [&#xd;
-    {&#xd;
-      &quot;id&quot;: 1,&#xd;
-      &quot;basicDetails&quot;: {&#xd;
-        &quot;id&quot;: 124,&#xd;
-        &quot;name&quot;: &quot;John Doe&quot;,&#xd;
-        &quot;phoneNumbers&quot;: [&#xd;
-          &quot;2435678909&quot;&#xd;
-        ],&#xd;
-        &quot;address&quot;: {&#xd;
-          &quot;line1&quot;: &quot;65 Apple street&quot;,&#xd;
-          &quot;city&quot;: &quot;sample city&quot;,&#xd;
-          &quot;state&quot;: &quot;sample city&quot;,&#xd;
-          &quot;country&quot;: &quot;sample country&quot;&#xd;
-        }&#xd;
-      },&#xd;
-      &quot;additionalDetails&quot;: {&#xd;
-        &quot;skills&quot;: [&#xd;
-          {&#xd;
-            &quot;skillId&quot;: 1,&#xd;
-            &quot;skill&quot;: &quot;C++&quot;&#xd;
-          }&#xd;
-        ],&#xd;
-        &quot;hobbies&quot;: [&#xd;
-          {&#xd;
-            &quot;hobbyId&quot;: 1,&#xd;
-            &quot;hobby&quot;: &quot;Cooking&quot;&#xd;
-          }&#xd;
-        ]&#xd;
-      }&#xd;
-    }&#xd;
-  ]&#xd;
-}</stringProp>
+                <stringProp name="Argument.value">dsdfdsffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">inputString</stringProp>
+              </elementProp>
+              <elementProp name="employeeId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">234332323232232322434323424244243</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">employeeId</stringProp>
+              </elementProp>
+              <elementProp name="skillId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">231343434345454335324242343434344</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">skillId</stringProp>
+              </elementProp>
+              <elementProp name="hobbyId" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">848323423423423434243243242342342</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">hobbyId</stringProp>
+              </elementProp>
+              <elementProp name="phone" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">32784827213</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">phone</stringProp>
+              </elementProp>
+              <elementProp name="city" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Boston</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">city</stringProp>
+              </elementProp>
+              <elementProp name="state" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">MA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">state</stringProp>
+              </elementProp>
+              <elementProp name="country" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">USA</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">country</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -400,6 +450,7 @@
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -468,7 +519,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -505,7 +556,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.BytesThroughputOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Bytes Throughput Over Time" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.BytesThroughputOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Bytes Throughput Over Time" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -550,7 +601,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -595,7 +646,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -632,7 +683,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
+      <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -677,7 +728,7 @@
         <boolProp name="exclude_checkbox_state">false</boolProp>
       </kg.apc.jmeter.vizualizers.CorrectedResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
